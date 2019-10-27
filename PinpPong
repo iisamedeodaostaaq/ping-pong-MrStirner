@@ -1,0 +1,103 @@
+vx=1
+vy=1
+x=400
+y=200
+x1=20
+y1=20
+h=10
+l=80
+p1=0 
+p2=0
+lineax1=0
+
+def setup():
+    
+   size(800,900)
+   global lineax2,xr,yr,xr2,yr2,lineax1,lineay1,f
+   lineax2=width 
+   lineay1=height/2
+   lineax2=width
+   xr=(width/2)-(l/2)
+   yr=height-h
+   yr2=0
+   xr2=(width/2)-(l/2)
+   f = createFont("8bit.ttf",32)
+   
+
+                    
+
+
+
+def draw():
+       global x,y,vx,vy,x1,y1,xr,xr2,yr2,p1,p2,lineax1,lineay1,lineax2,lineay2
+       
+       
+
+       background(0,0,0)
+       
+       ellipseMode(CENTER) 
+       ellipse(x,y,x1,y1)  #x1 e y1 rappresentano altezza e larghezza della pallina lol :')
+       
+       
+       pushStyle()
+       stroke(255)
+       line(lineax1,lineay1,lineax2,lineay1)
+       strokeWeight(5)
+       noStroke()
+       textSize(20)
+       textFont(f,32)
+       fill(0,219,102)
+       text("SCORE :" + str(p1),10,h*2)
+       text("SCORE :" + str(p2),20,height-h*2)
+       rect(xr,yr,l,h)  #rettangolo inferiore
+       rect(xr2,yr2,l,h) #rettangolo superiore
+       popStyle()
+       
+       
+       
+       x=x+2.5*vx
+       y=y+2.5*vy
+       if x>width or x<0:
+           vx*=-1
+           fill(random(255),random(255),random(255))
+       if y>height or y<0:
+           vy*=-1    
+           fill(random(255),random(255),random(255))
+       if x>xr and x<=xr+l and y+y1/2 >=yr+h/2: #rimbalzo pallina racchetta inferiore 
+           vy*=-1
+           
+      
+       if x>xr2 and x<=xr2+l and y-y1/2<=(yr2+h/2): # rimbalzo pallina racchetta superiore
+           vy*=-1
+       if y-y1/2 < yr2: #score giocatore superiore
+           
+           p1=p1+1  
+           x=(width/2)
+           y=(height/2) 
+           x=x*random(vx) 
+           y=y*random(vy)
+
+       if y-y1/2 > yr:    #score giocatore inferiore
+           p2+=1
+           x=(width/2)
+           y=(height/2)
+           x=(x)*random(vx) 
+           y=(y)*random(vy) 
+  
+
+    
+        
+           
+def keyPressed():
+    global x,y,vx,vy,x1,y1,xr,xr2,yr2 
+    if key=='a' and xr2>0 :     #movimento racchetta superiore
+       
+            xr2-=11
+    if key=='d' and xr2<(width-l):
+           xr2+=11
+                      
+    if keyCode==LEFT and xr>0 :  # movimento racchetta inferiore 
+   
+        xr-=11
+    if keyCode==RIGHT and xr<(width-l):
+        xr+=11
