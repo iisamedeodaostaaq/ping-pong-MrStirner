@@ -103,3 +103,4 @@ def keyPressed():
         xr-=11
     if keyCode==RIGHT and xr<(width-l):
         xr+=11
+        
