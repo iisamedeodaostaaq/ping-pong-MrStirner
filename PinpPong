@@ -1,3 +1,4 @@
+## Prof.: Mancano i commenti e i nomi delle variabili non esprimono il loro significato: codice non  manutenibile
 vx=1
 vy=1
 x=400
@@ -63,6 +64,7 @@ def draw():
        if y>height or y<0:
            vy*=-1    
            fill(random(255),random(255),random(255))
+## Prof.: le variabili che hai usato non aiutano a comprendere il codice
        if x>xr and x<=xr+l and y+y1/2 >=yr+h/2: #rimbalzo pallina racchetta inferiore 
            vy*=-1
            
@@ -76,7 +78,7 @@ def draw():
            y=(height/2) 
            x=x*random(vx) 
            y=y*random(vy)
-
+## Prof.: qui c'è un errore nel calcolo del tocco di "fondo campo"
        if y-y1/2 > yr:    #score giocatore inferiore
            p2+=1
            x=(width/2)
